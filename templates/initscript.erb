@@ -1,0 +1,32 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          vpnc-<%= @name %>
+# Required-Start:    $syslog $network
+# Required-Stop:     $syslog $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: VPNC profile <%= @name %>
+# Description:       Debian init script for the VPNC profile <%= @name %>
+### END INIT INFO
+
+. /lib/lsb/init-functions
+
+case "$1" in
+  start)
+        log_daemon_msg "Starting VPN connection" "vpnc-<%= @name %>"
+        /usr/sbin/vpnc-connect /etc/vpnc/<%= @name %>.conf
+        log_end_msg $?
+    ;;
+  stop)
+        log_daemon_msg "Stopping VPN connection" "vpnc-<%= @name %>"
+        /usr/sbin/vpnc-disconnect
+        log_end_msg $?
+    ;;
+  *)
+    echo "Usage: /etc/init.d/vpnc-<%= @name %> {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
+
