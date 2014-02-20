@@ -1,0 +1,10 @@
+IPSec ID <%= @id %>
+IPSec gateway <%= @gateway %>
+IPSec secret <%= @secret %>
+
+Xauth username <%= @username %>
+Xauth password <%= @password %>
+
+<% @options.each do |key,value| -%>
+<%= key %> <%= value %>
+<% end -%>
