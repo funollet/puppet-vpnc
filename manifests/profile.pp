@@ -27,7 +27,7 @@ define vpnc::profile (
     }
 
     service {"vpnc-${name}":
-      enable     => $onboot,
+      enable     => $on_boot,
       hasrestart => false,
       hasstatus  => false,
       require    => File["/etc/init.d/vpnc-${name}"],
