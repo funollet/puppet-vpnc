@@ -14,7 +14,7 @@ define vpnc::profile (
     content => template('vpnc/profile.conf.erb'),
     owner   => 'root',
     group   => 'root',
-    mode    => '600',
+    mode    => '0600',
     require => Package['vpnc'],
   }
 
