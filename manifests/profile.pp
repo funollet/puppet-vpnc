@@ -14,7 +14,7 @@ define vpnc::profile (
     content => template('vpnc/profile.conf.erb'),
     owner   => 'root',
     group   => 'root',
-    mode    => '600',
+    mode    => '0600',
     require => Package['vpnc'],
   }
 
@@ -27,7 +27,7 @@ define vpnc::profile (
     }
 
     service {"vpnc-${name}":
-      enable     => $onboot,
+      enable     => $on_boot,
       hasrestart => false,
       hasstatus  => false,
       require    => File["/etc/init.d/vpnc-${name}"],
